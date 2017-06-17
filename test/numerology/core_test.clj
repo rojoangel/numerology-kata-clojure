@@ -9,4 +9,9 @@
 
   (testing "replaces 2 with an equal amount of 1s as the number to the left"
     (is (= [1 1] (process [1 2])))
-    (is (= [0] (process [0 2])))))
+    (is (= [0] (process [0 2]))))
+
+  (testing "replaces 6 with an equal amount of 3's as the value of the number which is an equal
+  amount of steps to the right of the 6 as the number which is to the immediate left of it"
+    (is (= [1 3 1] (process [1 6 1])))
+    (is (= [0 3 3 3 3 3 3] (process [0 6])))))

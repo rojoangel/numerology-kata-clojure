@@ -5,7 +5,10 @@
     (case n
       9 [10 10]
       2 (let [left (nth ns (dec idx))]
-          (repeat left 1) )
+          (repeat left 1))
+      6 (let [left (nth ns (dec idx))
+              repetition (nth ns (+ idx left))]
+          (repeat repetition 3))
       n)))
 
 (defn process [ns]
