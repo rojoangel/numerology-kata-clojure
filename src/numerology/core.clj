@@ -1,6 +1,6 @@
 (ns numerology.core)
 
-(defn replace [idx ns]
+(defn replace-idx [idx ns]
   (let [n (nth ns idx)]
     (case n
       9 [10 10]
@@ -9,4 +9,4 @@
       n)))
 
 (defn process [ns]
-  (flatten (map-indexed replace (repeat (count ns) ns))))
+  (flatten (map-indexed replace-idx (repeat (count ns) ns))))
