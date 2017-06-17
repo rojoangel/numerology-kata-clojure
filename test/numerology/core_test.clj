@@ -5,4 +5,7 @@
 (deftest a-test
   (testing "replaces 9 with two tens"
     (is (= [10 10] (process [9])))
-    (is (= [0 10 10 0] (process [0 9 0])))))
+    (is (= [0 10 10 0] (process [0 9 0]))))
+
+  (testing "replaces 2 with an equal amount of 1s as the number to the left"
+    (is (= [1 1] (process [1 2]) ))))
