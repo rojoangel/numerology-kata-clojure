@@ -22,6 +22,9 @@
         5))
     5))
 
+(defmethod replace-idx 4 [idx ns]
+  3)
+
 (defmethod replace-idx :default [idx ns]
   (nth ns idx))
 
