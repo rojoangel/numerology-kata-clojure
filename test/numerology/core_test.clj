@@ -21,4 +21,7 @@
   of the other in between.
   When four 3's have been replaced, and three 4's have been replaced no more replacements may occur until a 7 is seen.
   Once a 7 is seen, the whole process is reset and four 3's and three 4's may be replaced again"
-    (is (= [5] (process [3])))))
+    (is (= [5] (process [3])))
+    (is (= [3 5] (process [3 5])))
+    (is (= [5 5] (process [5 3])))
+    (is (= [0 5] (process [0 3])))))

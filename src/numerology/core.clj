@@ -15,7 +15,12 @@
     (repeat repetition 3)))
 
 (defmethod replace-idx 3 [idx ns]
-  5)
+  (if (> (dec (count ns)) idx)
+    (let [right (nth ns (inc idx))]
+      (if (= right 5)
+        3
+        5))
+    5))
 
 (defmethod replace-idx :default [idx ns]
   (nth ns idx))
