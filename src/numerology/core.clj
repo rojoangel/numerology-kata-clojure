@@ -14,6 +14,9 @@
         repetition (nth ns (+ idx left))]
     (repeat repetition 3)))
 
+(defmethod replace-idx 3 [idx ns]
+  5)
+
 (defmethod replace-idx :default [idx ns]
   (nth ns idx))
 
