@@ -35,7 +35,8 @@
 
 (defn process [ns]
   (flatten
-    (reduce
-      #(conj %1 (apply replace-idx %2))
-      []
-      (map-indexed vector (repeat (count ns) ns)))))
+    (:out
+      (reduce
+        #(update-in %1 [:out] conj (apply replace-idx %2))
+        {:replacement-counts {} :out []}
+        (map-indexed vector (repeat (count ns) ns))))))
