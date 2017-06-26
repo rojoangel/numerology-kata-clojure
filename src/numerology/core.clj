@@ -34,4 +34,8 @@
   (nth ns idx))
 
 (defn process [ns]
-  (flatten (map-indexed replace-idx (repeat (count ns) ns))))
+  (flatten
+    (reduce
+      #(conj %1 (apply replace-idx %2))
+      []
+      (map-indexed vector (repeat (count ns) ns)))))
