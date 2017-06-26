@@ -25,4 +25,7 @@
     (is (= [3 5] (process [3 5])))
     (is (= [5 5] (process [5 3])))
     (is (= [0 5] (process [0 3])))
-    (is (= [3] (process [4])))))
+    (is (= [3] (process [4])))
+    (is (= [5 4] (process [5 4])))
+    (is (= [3 5] (process [4 5])))
+    (is (= [0 3] (process [0 4])))))

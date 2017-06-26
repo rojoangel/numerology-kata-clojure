@@ -23,7 +23,12 @@
     5))
 
 (defmethod replace-idx 4 [idx ns]
-  3)
+  (if (> idx 0)
+    (let [left (nth ns (dec idx))]
+      (if (= left 5)
+        4
+        3))
+    3))
 
 (defmethod replace-idx :default [idx ns]
   (nth ns idx))
