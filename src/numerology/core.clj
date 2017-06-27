@@ -33,8 +33,8 @@
 (defmethod replace-idx :default [idx ns]
   (nth ns idx))
 
-(defn update-acc [acc idx-ns]
-  (update-in acc [:out] conj (apply replace-idx idx-ns)))
+(defn update-acc [acc [idx ns]]
+  (update-in acc [:out] conj (replace-idx idx ns)))
 
 (defn process [ns]
   (flatten
