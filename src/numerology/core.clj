@@ -1,20 +1,20 @@
 (ns numerology.core)
 
-(defmulti replace-idx (fn [idx ns] (nth ns idx)))
+(defmulti replace-idx (fn [idx ns _] (nth ns idx)))
 
-(defmethod replace-idx 9 [idx ns]
+(defmethod replace-idx 9 [idx ns _]
   [10 10])
 
-(defmethod replace-idx 2 [idx ns]
+(defmethod replace-idx 2 [idx ns _]
   (let [left (nth ns (dec idx))]
     (repeat left 1)))
 
-(defmethod replace-idx 6 [idx ns]
+(defmethod replace-idx 6 [idx ns _]
   (let [left (nth ns (dec idx))
         repetition (nth ns (+ idx left))]
     (repeat repetition 3)))
 
-(defmethod replace-idx 3 [idx ns]
+(defmethod replace-idx 3 [idx ns _]
   (if (> (dec (count ns)) idx)
     (let [right (nth ns (inc idx))]
       (if (= right 5)
@@ -22,7 +22,7 @@
         5))
     5))
 
-(defmethod replace-idx 4 [idx ns]
+(defmethod replace-idx 4 [idx ns _]
   (if (> idx 0)
     (let [left (nth ns (dec idx))]
       (if (= left 5)
@@ -30,11 +30,11 @@
         3))
     3))
 
-(defmethod replace-idx :default [idx ns]
+(defmethod replace-idx :default [idx ns _]
   (nth ns idx))
 
 (defn update-acc [acc [idx ns]]
-  (update-in acc [:out] conj (replace-idx idx ns)))
+  (update-in acc [:out] conj (replace-idx idx ns (:replacement-counts acc))))
 
 (defn process [ns]
   (flatten
