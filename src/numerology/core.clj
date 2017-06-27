@@ -33,10 +33,13 @@
 (defmethod replace-idx :default [idx ns]
   (nth ns idx))
 
+(defn update-acc [acc idx-ns]
+  (update-in acc [:out] conj (apply replace-idx idx-ns)))
+
 (defn process [ns]
   (flatten
     (:out
       (reduce
-        #(update-in %1 [:out] conj (apply replace-idx %2))
+        update-acc
         {:replacement-counts {} :out []}
         (map-indexed vector (repeat (count ns) ns))))))
