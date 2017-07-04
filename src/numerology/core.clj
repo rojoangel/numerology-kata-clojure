@@ -41,12 +41,9 @@
 (defmethod replace-idx :default [acc idx ns]
   (update acc :out conj (nth ns idx)))
 
-(defn update-acc [acc [idx ns]]
-  (replace-idx acc idx ns))
-
 (defn process [ns]
   (:out
     (reduce
-      update-acc
+      (partial apply replace-idx)
       {:threes-n-fours [] :out []}
       (map-indexed vector (repeat (count ns) ns)))))
