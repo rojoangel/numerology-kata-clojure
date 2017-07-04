@@ -33,6 +33,11 @@
           (update :out conj 3)
           (update :threes-n-fours conj 4)))))
 
+(defmethod replace-idx 7 [idx ns acc]
+  (-> acc
+      (update :out conj (nth ns idx))
+      (assoc :threes-n-fours [])))
+
 (defmethod replace-idx :default [idx ns acc]
   (update acc :out conj (nth ns idx)))
 

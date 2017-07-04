@@ -31,7 +31,9 @@
     without having replaced one instance of the other in between."
       (is (= [5 3] (process [3 3])))
       (is (= [3 4] (process [4 4]))))
-    (testing "When four 3's have been replaced, and three 4's have been replaced no more replacements may occur until a 7 is seen.
-    Once a 7 is seen, the whole process is reset and four 3's and three 4's may be replaced again"
+    (testing "When four 3's have been replaced, and three 4's have been replaced no more replacements may occur until a 7 is seen."
       (is (= [5 3 5 3 5 3 5 4] (process [3 4 3 4 3 4 3 4])))
-      (is (= [3 5 3 5 3 5 3 5 4] (process [4 3 4 3 4 3 4 3 4]))))))
+      (is (= [3 5 3 5 3 5 3 5 4] (process [4 3 4 3 4 3 4 3 4]))))
+    (testing "Once a 7 is seen, the whole process is reset and four 3's and three 4's may be replaced again"
+      (is (= [5 3 5 3 5 3 5 4 7 5] (process [3 4 3 4 3 4 3 4 7 3])))
+      (is (= [3 5 3 5 3 5 3 5 4 7 3] (process [4 3 4 3 4 3 4 3 4 7 4]))))))
