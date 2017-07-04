@@ -28,7 +28,10 @@
       (is (= [3 5] (process [4 5])))
       (is (= [0 3] (process [0 4]))))
     (testing "When replacing the 3's and 4's, you may not replace more than one 3 or 4 in a go
-    without having replaced one instance of the other in between.
-    When four 3's have been replaced, and three 4's have been replaced no more replacements may occur until a 7 is seen.
+    without having replaced one instance of the other in between."
+      (is (= [5 3] (process [3 3])))
+      (is (= [3 4] (process [4 4]))))
+    (testing "When four 3's have been replaced, and three 4's have been replaced no more replacements may occur until a 7 is seen.
     Once a 7 is seen, the whole process is reset and four 3's and three 4's may be replaced again"
-      (is (= [5 3] (process [3 3]))))))
+      (is (= [5 3 5 3 5 3 5 4] (process [3 4 3 4 3 4 3 4])))
+      (is (= [3 5 3 5 3 5 3 5 4] (process [4 3 4 3 4 3 4 3 4]))))))

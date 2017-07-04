@@ -25,7 +25,9 @@
 (defmethod replace-idx 4 [idx ns {:keys [out threes-n-fours] :as acc}]
   (let [left (get ns (dec idx))]
     (if (or (= (last threes-n-fours) 4)
-            (= left 5))
+            (= left 5)
+            (= threes-n-fours [3 4 3 4 3 4 3])
+            (= threes-n-fours [4 3 4 3 4 3 4 3]))
       (update acc :out conj 4)
       (-> acc
           (update :out conj 3)
