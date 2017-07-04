@@ -38,9 +38,8 @@
   (replace-idx idx ns acc))
 
 (defn process [ns]
-  (flatten
-    (:out
-      (reduce
-        update-acc
-        {:threes-n-fours [] :out []}
-        (map-indexed vector (repeat (count ns) ns))))))
+  (:out
+    (reduce
+      update-acc
+      {:threes-n-fours [] :out []}
+      (map-indexed vector (repeat (count ns) ns)))))
