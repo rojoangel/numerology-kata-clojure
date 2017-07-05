@@ -86,6 +86,26 @@ As in the examples below
 >
 >  output: 12,11,10
 
+# Step 5
+
+For the next task, you will extend the functionality by replacing the last
+integer in the presented input sequence by the immediately ascending successive
+even integer, if not already even, under the precondition that the inital 
+integer in the sequence is not odd. This rule is applied at the end after all
+other rules, and only to be applied in a circumstance where the sequence as
+presented to the program without any rules applied has an even integer as the
+first number.
+
+As in the examples below
+
+>  input: 12,17,5
+>
+>  output: 12,17,6
+  
+>  input: 12,17,12
+>
+> output: 12,17,12
+
 Created by [Matteo Vaccari](http://matteo.vaccari.name/).
 
 ## License
