@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [numerology.core :refer :all]))
 
-(deftest a-test
+(deftest testing-process
   (testing "replaces 9 with two tens"
     (is (= [10 10] (process [9])))
     (is (= [0 10 10 0] (process [0 9 0]))))
@@ -37,3 +37,11 @@
     (testing "Once a 7 is seen, the whole process is reset and four 3's and three 4's may be replaced again"
       (is (= [5 3 5 3 5 3 5 4 7 5] (process [3 4 3 4 3 4 3 4 7 3])))
       (is (= [3 5 3 5 3 5 3 5 4 7 3] (process [4 3 4 3 4 3 4 3 4 7 4]))))))
+
+(deftest testing-post-process
+  (testing "replacing the last integer in the input sequence by the lowest next odd number if not already
+  odd, when the first number in the input sequence is not even. The mutation of the last integer happens
+  after all other rules have been applied, with the basis of the premise from the pristine unmutated version
+  of the first integer in the series as it was before any rules where applied to mutate the sequence of numbers."
+    (is (= [1 11 9] (post-process [1 11 9] [1 11 9])))
+    (is (= [12 11 10] (post-process [12 11 10] [12 11 10])))))

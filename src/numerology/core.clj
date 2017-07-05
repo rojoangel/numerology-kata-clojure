@@ -47,3 +47,6 @@
       (partial apply replace-idx)
       {:threes-n-fours [] :out []}
       (map-indexed vector (repeat (count ns) ns)))))
+
+(defn post-process [orig-ns processed-ns]
+  processed-ns)
