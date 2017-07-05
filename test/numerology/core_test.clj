@@ -52,4 +52,4 @@
   This rule is applied at the end after all other rules, and only to be applied in a circumstance where the sequence
   as presented to the program without any rules applied has an even integer as the first number."
     (is (= [12 17 12] (post-process [12 17 12] [12 17 12])))
-    ))
+    (is (= [12 17 6] (post-process [12 17 5] [12 17 5])))))

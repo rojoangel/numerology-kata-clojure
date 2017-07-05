@@ -51,6 +51,12 @@
 (defn post-process [orig-ns processed-ns]
   (let [last-processed (last processed-ns)
         first-orig (first orig-ns)]
-    (if (and (not (odd? last-processed)) (not (even? first-orig)))
+    (cond
+      (and (not (odd? last-processed)) (not (even? first-orig)))
       (conj (apply vector (drop-last processed-ns)) (dec last-processed))
+
+      (and (not (even? last-processed)) (not (odd? first-orig)))
+      (conj (apply vector (drop-last processed-ns)) (inc last-processed))
+
+      :else
       processed-ns)))
