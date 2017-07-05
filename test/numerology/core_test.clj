@@ -45,4 +45,11 @@
   of the first integer in the series as it was before any rules where applied to mutate the sequence of numbers."
     (is (= [1 11 9] (post-process [1 11 9] [1 11 9])))
     (is (= [12 11 10] (post-process [12 11 10] [12 11 10])))
-    (is (= [1 11 9] (post-process [1 11 10] [1 11 10])))))
+    (is (= [1 11 9] (post-process [1 11 10] [1 11 10]))))
+
+  (testing "replace the last integer in the presented input sequence by the immediately ascending successive
+  even integer, if not already even, under the precondition that the initial integer in the sequence is not odd.
+  This rule is applied at the end after all other rules, and only to be applied in a circumstance where the sequence
+  as presented to the program without any rules applied has an even integer as the first number."
+    (is (= [12 17 12] (post-process [12 17 12] [12 17 12])))
+    ))
