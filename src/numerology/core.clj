@@ -49,4 +49,8 @@
       (map-indexed vector (repeat (count ns) ns)))))
 
 (defn post-process [orig-ns processed-ns]
-  processed-ns)
+  (let [last-processed (last processed-ns)
+        first-orig (first orig-ns)]
+    (if (and (not (odd? last-processed)) (not (even? first-orig)))
+      (conj (apply vector (drop-last processed-ns)) (dec last-processed))
+      processed-ns)))

@@ -39,9 +39,10 @@
       (is (= [3 5 3 5 3 5 3 5 4 7 3] (process [4 3 4 3 4 3 4 3 4 7 4]))))))
 
 (deftest testing-post-process
-  (testing "replacing the last integer in the input sequence by the lowest next odd number if not already
+  (testing "replace the last integer in the input sequence by the lowest next odd number if not already
   odd, when the first number in the input sequence is not even. The mutation of the last integer happens
   after all other rules have been applied, with the basis of the premise from the pristine unmutated version
   of the first integer in the series as it was before any rules where applied to mutate the sequence of numbers."
     (is (= [1 11 9] (post-process [1 11 9] [1 11 9])))
-    (is (= [12 11 10] (post-process [12 11 10] [12 11 10])))))
+    (is (= [12 11 10] (post-process [12 11 10] [12 11 10])))
+    (is (= [1 11 9] (post-process [1 11 10] [1 11 10])))))
